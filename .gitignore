@@ -1,0 +1,43 @@
+# Build output
+build/
+out/
+bin/
+obj/
+cmake-build-*/
+
+# CMake
+CMakeUserPresets.json
+CMakeCache.txt
+CMakeFiles/
+.cmake/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Qt Creator
+*.pro.user
+*.pro.user.*
+
+# Compiled / generated
+*.exe
+*.dll
+*.pdb
+*.lib
+*.obj
+*.o
+*.a
+*.so
+*.dylib
+*.exp
+*.ilk
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Python / misc
+__pycache__/
+*.pyc
