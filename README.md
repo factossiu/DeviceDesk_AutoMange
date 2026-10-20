@@ -11,7 +11,8 @@
 - [x] `device_simulator`：基于 `QTcpServer` 的本地设备模拟器
 - [x] 客户端 ↔ 模拟器 TCP 通信（`127.0.0.1:9000`）
 - [x] VS Code + CMake Tools 一键配置 / 构建
-- [ ] 设备通信协议封装（`src/communication`）
+- [x] 源码模块化：`src/CMakeLists.txt` 统一管理子模块（`communication` 接口库）
+- [ ] 设备通信协议封装（`src/communication`，已定义 `message_header` 结构体）
 - [ ] 核心业务逻辑（`src/core`）
 - [ ] 数据库持久化（`src/database`）
 - [ ] UI 界面完善（`src/ui`）
@@ -35,7 +36,8 @@ DeviceDesk_AutoManage/
 │   ├── client/          # 图形客户端（Qt Widgets）
 │   └── simulator/       # 设备模拟器（TCP 服务端）
 ├── src/
-│   ├── communication/   # 通信层（待实现）
+│   ├── CMakeLists.txt   # 统一管理各子模块 target
+│   ├── communication/   # 通信层（进行中：message_header）
 │   ├── core/            # 核心业务（待实现）
 │   ├── database/        # 数据持久化（待实现）
 │   └── ui/              # UI 组件（待实现）
@@ -116,6 +118,8 @@ Received: "HELLO\n"
 
 > 这是用于验证通信链路的最小实现，正式的设备通信协议将在 `src/communication` 中定义。
 
+当前 `src/communication` 已建立 `communication` 接口库（链接 `Qt6::Core`），并定义了消息头结构体 `message_header`（`magic` / `version` / `message_type` / `body_length`），用于后续统一报文格式。
+
 ## 运行 Debug 版的依赖说明
 
 Debug 版可执行文件需要 Qt 调试版 DLL 和 MSVC 调试运行时（文件名带 `d` 的 DLL）。双击运行时若提示缺少 DLL，可用 Qt 自带的部署工具补齐：
@@ -130,4 +134,4 @@ windeployqt --debug --no-translations build/windows-msvc-debug/apps/client/Debug
 
 ---
 
-> 文档最后更新时间：2026-10-20 23:37:53（UTC+8）
+> 文档最后更新时间：2026-10-21 00:34:28（UTC+8）

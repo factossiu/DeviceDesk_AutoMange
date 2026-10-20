@@ -13,5 +13,6 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Network Widgets)
 
+add_subdirectory(src)
 add_subdirectory(apps/client)
 add_subdirectory(apps/simulator)

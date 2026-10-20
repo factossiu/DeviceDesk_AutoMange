@@ -20,6 +20,9 @@ CMakeFiles/
 *.pro.user
 *.pro.user.*
 
+# VS Code（机器相关，含本机绝对路径）
+.vscode/c_cpp_properties.json
+
 # Compiled / generated
 *.exe
 *.dll
